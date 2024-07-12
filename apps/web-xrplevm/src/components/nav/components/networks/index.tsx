@@ -10,26 +10,25 @@ const Networks: FC<ComponentDefault> = ({ className }) => {
     {
       logo: 'https://livenet.xrpl.org/apple-touch-icon.png',
       name: 'XRPL Explorer',
-      mainnet: [
+      mainnet: [],
+      testnet: [],
+      retired: [
+        {
+          chainId: 'xrpl-devnet',
+          url: 'https://explorer.xrplevm.org/',
+          name: 'Devnet',
+        },
+      ],
+      other: [
         {
           chainId: 'xrpl-mainnet',
           url: 'https://livenet.xrpl.org/',
           name: 'Mainnet',
         },
-      ],
-      testnet: [
         {
           chainId: 'xrpl-testnet',
           url: 'https://testnet.xrpl.org/',
           name: 'Testnet',
-        },
-      ],
-      retired: [],
-      other: [
-        {
-          chainId: 'xrpl-devnet',
-          url: 'https://devnet.xrpl.org/',
-          name: 'Devnet',
         },
       ],
     },
@@ -75,6 +74,7 @@ const Networks: FC<ComponentDefault> = ({ className }) => {
                 url={network.url}
                 name={network.name}
                 chainId={network.chainId}
+                disabled
               />
             ))}
           </div>

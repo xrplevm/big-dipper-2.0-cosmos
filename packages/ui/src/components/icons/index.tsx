@@ -7,3 +7,4 @@ export { default as TelegramIcon } from '@/components/icons/telegram';
 export { default as TwitterIcon } from '@/components/icons/twitter';
 export { default as YoutubeIcon } from '@/components/icons/youtube';
 export { default as PeersystIcon } from '@/components/icons/peersyst';
+export { default as DiscordIcon } from '@/components/icons/discord';

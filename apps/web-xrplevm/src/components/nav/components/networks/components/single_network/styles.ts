@@ -24,12 +24,18 @@ const useStyles = makeStyles()((theme) => ({
     background: theme.palette.custom.general.icon,
     '&.retired': {
       background: theme.palette.custom.primaryData.four,
+      pointerEvents: 'none',
+      cursor: 'default',
+      opacity: 0.5,
     },
     '&.testnet': {
       background: theme.palette.custom.primaryData.three,
     },
     '&.mainnet': {
       background: theme.palette.primary.main,
+    },
+    '&.other': {
+      opacity: 1,
     },
   },
 }));

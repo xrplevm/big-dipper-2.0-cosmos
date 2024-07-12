@@ -19,8 +19,8 @@ const useStyles = makeStyles()((theme) => ({
     [theme.breakpoints.up('lg')]: {
       position: 'relative',
       zIndex: 1299,
-      background: 'rgba(255, 255, 255, 0)',
-      backdropFilter: 'blur(10px)' /* Efecto de desenfoque */,
+      background: 'rgba(255, 255, 255, 0.2)',
+      backdropFilter: 'blur(2rem)',
     },
     '& .footer__logo--container': {
       display: 'none',
@@ -63,6 +63,7 @@ const useStyles = makeStyles()((theme) => ({
     top: 0,
     [theme.breakpoints.down('lg')]: {
       left: 0,
+      top: '212px',
     },
   },
   backgroundRight: {

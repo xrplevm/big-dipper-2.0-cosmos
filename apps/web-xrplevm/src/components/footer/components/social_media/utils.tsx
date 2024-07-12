@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { GithubIcon, TelegramIcon, TwitterIcon } from '@/components/icons';
+import { DiscordIcon, GithubIcon, TelegramIcon, TwitterIcon } from '@/components/icons';
 
 export const socialMediaLinks: {
   component: ReactNode;
@@ -20,5 +20,10 @@ export const socialMediaLinks: {
     component: <GithubIcon />,
     className: 'github',
     url: 'https://github.com/forbole',
+  },
+  {
+    component: <DiscordIcon />,
+    className: 'discord',
+    url: 'https://discord.com/invite/xrplevm',
   },
 ];

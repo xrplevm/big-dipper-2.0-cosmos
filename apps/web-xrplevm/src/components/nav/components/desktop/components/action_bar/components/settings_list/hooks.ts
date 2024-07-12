@@ -19,7 +19,7 @@ export const useSettingList = ({ lang }: { lang: string }) => {
   const [tx, setTx] = useRecoilState(writeTx) as [Tx, SetterOrUpdater<Tx>];
   const [time, setTimeFormat] = useRecoilState(writeTimeFormat) as [
     TimeFormat,
-    SetterOrUpdater<TimeFormat>,
+    SetterOrUpdater<TimeFormat>
   ];
 
   const [open, setOpen] = useState(false);
