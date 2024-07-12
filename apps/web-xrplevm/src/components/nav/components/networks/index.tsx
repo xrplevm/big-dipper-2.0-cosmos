@@ -6,7 +6,23 @@ import { FC } from 'react';
 
 const Networks: FC<ComponentDefault> = ({ className }) => {
   const { classes } = useStyles();
-  const networks = [
+
+  interface NetworkUrl {
+    chainId: string;
+    url: string;
+    name: string;
+  }
+
+  interface Network {
+    logo: string;
+    name: string;
+    mainnet: NetworkUrl[];
+    testnet: NetworkUrl[];
+    retired: NetworkUrl[];
+    other: NetworkUrl[];
+  }
+
+  const networks: Network[] = [
     {
       logo: 'https://livenet.xrpl.org/apple-touch-icon.png',
       name: 'XRPL Explorer',
