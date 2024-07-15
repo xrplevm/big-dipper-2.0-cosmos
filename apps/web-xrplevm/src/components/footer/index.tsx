@@ -13,7 +13,7 @@ const Footer: FC<{ className?: string }> = ({ className }) => {
   const { classes, cx } = useStyles();
 
   return (
-    <div className={cx(classes.root, className)}>
+    <footer className={cx(classes.root, className)}>
       <div className="footer">
         {/* links */}
         {/* ============================= */}
@@ -40,10 +40,11 @@ const Footer: FC<{ className?: string }> = ({ className }) => {
               </a>
             </div>
           </div>
+          <div classes="unColor" />
         </div>
       </div>
       <Divider />
-    </div>
+    </footer>
   );
 };
 

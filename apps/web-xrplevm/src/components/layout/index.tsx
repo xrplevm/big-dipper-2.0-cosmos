@@ -34,7 +34,6 @@ const Layout = (props: LayoutProps) => {
       className={classes.root}
     >
       <div className={classes.contentWrapper}>
-        <div className={classes.backgroundLeft} />
         <Nav title={navTitle} />
         <div className={classes.children}>
           <div className={classes.appBarPlaceholder} />
@@ -44,7 +43,10 @@ const Layout = (props: LayoutProps) => {
               <Typography variant="h4"> {t('stakingDataIsSourcedFromCosmoshub')}</Typography>
             </div>
           ) : null}
-          <div className={cx(className, 'main-content')}>{children}</div>
+          <div className={cx(className, 'main-content')}>
+            <div className={classes.backgroundLeft} />
+            {children}
+          </div>
         </div>
       </div>
       <div className={classes.backgroundRight} />
