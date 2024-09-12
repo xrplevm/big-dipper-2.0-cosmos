@@ -94,6 +94,10 @@ import jackalLogoDark from 'shared-utils/assets/logos/jackal-dark.svg?url';
 import jackalLogoLight from 'shared-utils/assets/logos/jackal-light.svg?url';
 import archwayLogoDark from 'shared-utils/assets/logos/archway-dark.svg?url';
 import archwayLogoLight from 'shared-utils/assets/logos/archway-light.svg?url';
+import xrplevmLogoDark from 'shared-utils/assets/logos/xrplevm-dark.svg?url';
+import xrplevmLogoLight from 'shared-utils/assets/logos/xrplevm-light.svg?url';
+import xrplevmIconDark from 'shared-utils/assets/icons/xrplevm-dark.svg?url';
+import xrplevmIconLight from 'shared-utils/assets/icons/xrplevm-light.svg?url';
 
 interface IconProps extends Omit<ImageProps, 'id' | 'src'> {
   type: 'icon' | 'logo';
@@ -161,6 +165,8 @@ const ChainIcon = ({
           : [cheqdLogoDark, cheqdLogoLight];
       break;
     case 'desmos':
+      [iconDark, iconLight] =
+        type === 'icon' ? [xrplevmLogoLight, xrplevmLogoLight] : [xrplevmLogoDark, xrplevmLogoDark];
       break;
     case 'multiversx':
       [iconDark, iconLight] =
@@ -295,6 +301,10 @@ const ChainIcon = ({
     case 'archway':
       [iconDark, iconLight] =
         type === 'icon' ? [archwayIconBoth, archwayIconBoth] : [archwayLogoDark, archwayLogoLight];
+      break;
+    case 'xrplevm':
+      [iconDark, iconLight] =
+        type === 'icon' ? [xrplevmIconDark, xrplevmIconLight] : [xrplevmLogoDark, xrplevmLogoLight];
       break;
     default:
       throw new Error(`chain ${chainName} not supported`);
