@@ -40,7 +40,7 @@ const Footer: FC<{ className?: string }> = ({ className }) => {
               </a>
             </div>
           </div>
-          <div classes="unColor" />
+          <div className="unColor" />
         </div>
       </div>
       <Divider />
