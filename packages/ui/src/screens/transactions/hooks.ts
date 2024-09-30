@@ -2,9 +2,9 @@ import * as R from 'ramda';
 import { useState, useEffect, useCallback } from 'react';
 import { convertMsgsToModels } from '@/components/msg/utils';
 import {
-  useMessagesByTypesListenerSubscription,
-  MessagesByTypesListenerSubscription,
-  useMessagesByTypesQuery,
+  useTransactionsQuery,
+  useTransactionsListenerSubscription,
+  TransactionsListenerSubscription,
 } from '@/graphql/types/general_types';
 import type { TransactionsState } from '@/screens/transactions/types';
 import { convertMsgType } from '@/utils/convert_msg_type';
@@ -22,34 +22,32 @@ const uniqueAndSort = R.pipe(
   R.sort(R.descend((r) => r?.height))
 );
 
-const formatTransactions = (
-  data: MessagesByTypesListenerSubscription
-): TransactionsState['items'] => {
-  if (!data?.messagesByTypes) return [];
+const formatTransactions = (data: TransactionsListenerSubscription): TransactionsState['items'] => {
+  if (!data?.transactions) return [];
 
-  let formattedData = data.messagesByTypes;
-  if (data.messagesByTypes.length === 51) {
-    formattedData = data.messagesByTypes.slice(0, 51);
+  let formattedData = data.transactions;
+  if (data.transactions.length === 51) {
+    formattedData = data.transactions.slice(0, 51);
   }
 
   return formattedData.map((x) => {
-    const messages = convertMsgsToModels(x.transaction);
+    const messages = convertMsgsToModels(x);
     const msgType =
-      x.transaction?.messages?.map((eachMsg: any) => {
+      x.messages?.map((eachMsg: any) => {
         const eachMsgType = R.pathOr('none type', ['@type'], eachMsg);
         return eachMsgType ?? '';
       }) ?? [];
     const convertedMsgType = convertMsgType(msgType);
     return {
-      height: x.transaction?.height ?? 0,
-      hash: x.transaction?.hash ?? '',
+      height: x.height ?? 0,
+      hash: x.hash ?? '',
       type: convertedMsgType,
       messages: {
-        count: x.transaction?.messages?.length ?? 0,
+        count: x.messages?.length ?? 0,
         items: messages,
       },
-      success: x.transaction?.success ?? false,
-      timestamp: x.transaction?.block?.timestamp ?? '',
+      success: x.success ?? false,
+      timestamp: x.block?.timestamp ?? '',
     };
   });
 };
@@ -63,7 +61,6 @@ export const useTransactions = () => {
     items: [],
   });
   const msgTypes = useRecoilValue(readFilter);
-
   const handleSetState = useCallback(
     (stateChange: (prevState: TransactionsState) => TransactionsState) => {
       setState((prevState) => {
@@ -86,10 +83,7 @@ export const useTransactions = () => {
   // ================================
   // tx subscription
   // ================================
-  useMessagesByTypesListenerSubscription({
-    variables: {
-      types: msgTypes ?? '{}',
-    },
+  useTransactionsListenerSubscription({
     onData: (data) => {
       const newItems = uniqueAndSort([
         ...(data?.data?.data ? formatTransactions(data.data.data) : []),
@@ -107,17 +101,16 @@ export const useTransactions = () => {
   // tx query
   // ================================
   const LIMIT = 51;
-  const transactionQuery = useMessagesByTypesQuery({
+  const transactionQuery = useTransactionsQuery({
     variables: {
       limit: LIMIT,
       offset: 1,
-      types: msgTypes ?? '{}',
     },
     onError: () => {
       handleSetState((prevState) => ({ ...prevState, loading: false }));
     },
     onCompleted: (data) => {
-      const itemsLength = data.messagesByTypes.length;
+      const itemsLength = data.transactions.length;
       const newItems = uniqueAndSort([...state.items, ...(formatTransactions(data) ?? [])]);
       handleSetState((prevState) => ({
         ...prevState,
@@ -140,7 +133,7 @@ export const useTransactions = () => {
         },
       })
       .then(({ data }) => {
-        const itemsLength = data?.messagesByTypes.length;
+        const itemsLength = data?.transactions.length;
         const newItems = uniqueAndSort([...state.items, ...(formatTransactions(data) ?? [])]);
         handleSetState((prevState) => ({
           ...prevState,
