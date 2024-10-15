@@ -23,7 +23,7 @@ const TitleBar: FC<TitleBarProps> = ({ className, title }) => {
     <div className={cx(classes.root, className)}>
       {!title && <ChainIcon type="logo" className={classes.logo} alt="logo" />}
       {!!title && <Typography variant="h1">{title}</Typography>}
-      <div className={classes.content}>
+      {/* <div className={classes.content}>
         {market.map((x) => (
           <div key={x.key} className={classes.item}>
             <Typography variant="body1" className="label">
@@ -32,7 +32,7 @@ const TitleBar: FC<TitleBarProps> = ({ className, title }) => {
             <Typography variant="body1">{x.data}</Typography>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
