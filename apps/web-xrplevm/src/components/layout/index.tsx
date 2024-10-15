@@ -38,19 +38,14 @@ const Layout = (props: LayoutProps) => {
         <div className={classes.children}>
           <div className={classes.appBarPlaceholder} />
           {!!bannerLinks.length && <Banner />}
-          {navTitle === 'Validators' ? (
-            <div className={classes.content}>
-              <Typography variant="h4"> {t('stakingDataIsSourcedFromCosmoshub')}</Typography>
-            </div>
-          ) : null}
           <div className={cx(className, 'main-content')}>
             <div className={classes.backgroundLeft} />
             {children}
           </div>
+          <Footer className={classes.footer} />
         </div>
       </div>
       <div className={classes.backgroundRight} />
-      <Footer className={classes.footer} />
     </motion.div>
   );
 };
