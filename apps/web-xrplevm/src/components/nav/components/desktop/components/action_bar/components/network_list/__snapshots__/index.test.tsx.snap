@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: Nav/NetworkList it renders 1`] = `
+.emotion-0 {
+  background: #FFFFFF;
+}
+
+.emotion-0.emotion-0 {
+  overflow: auto;
+  padding: 16px;
+  border-radius: 4px;
+  background: #FFFFFF;
+}
+
+.emotion-0 svg {
+  width: 216px;
+  padding: 16px 14px 20px;
+}
+
+.emotion-1 {
+  padding: 24px;
+  height: 400px;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px 16px;
+}
+
+<div
+  className="emotion-0"
+>
+  <div
+    style={
+      {
+        "height": 30,
+      }
+    }
+  >
+    <svg />
+  </div>
+  <Networks
+    className="emotion-1"
+  />
+</div>
+`;

@@ -24,7 +24,6 @@ jest.mock('@/components/box', () => (props: JSX.IntrinsicElements['div']) => (
   <div id="Box" {...props} />
 ));
 
-
 // ==================================
 // unit tests
 // ==================================
