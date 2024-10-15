@@ -1,11 +1,11 @@
 import Typography from '@mui/material/Typography';
-import useAppTranslation from '@/hooks/useAppTranslation';
+// import useAppTranslation from '@/hooks/useAppTranslation';
 import { FC } from 'react';
-import { useRecoilValue } from 'recoil';
+// import { useRecoilValue } from 'recoil';
 import ChainIcon from '@/components/ChainIcon';
 import useStyles from '@/components/nav/components/title_bar/styles';
-import { formatMarket } from '@/components/nav/components/title_bar/utils';
-import { readMarket } from '@/recoil/market';
+// import { formatMarket } from '@/components/nav/components/title_bar/utils';
+// import { readMarket } from '@/recoil/market';
 
 type TitleBarProps = {
   className?: string;
@@ -13,11 +13,11 @@ type TitleBarProps = {
 };
 
 const TitleBar: FC<TitleBarProps> = ({ className, title }) => {
-  const { t } = useAppTranslation('common');
+  // const { t } = useAppTranslation('common');
   const { classes, cx } = useStyles();
-  const marketState = useRecoilValue(readMarket);
+  // const marketState = useRecoilValue(readMarket);
 
-  const market = formatMarket(marketState);
+  // const market = formatMarket(marketState);
 
   return (
     <div className={cx(classes.root, className)}>
