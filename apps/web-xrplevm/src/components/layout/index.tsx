@@ -42,10 +42,10 @@ const Layout = (props: LayoutProps) => {
             <div className={classes.backgroundLeft} />
             {children}
           </div>
+          <Footer className={classes.footer} />
         </div>
       </div>
       <div className={classes.backgroundRight} />
-      <Footer className={classes.footer} />
     </motion.div>
   );
 };

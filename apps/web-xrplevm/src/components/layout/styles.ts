@@ -68,9 +68,11 @@ const useStyles = makeStyles()((theme) => ({
   backgroundRight: {
     backgroundImage:
       "url('https://governance.xrplevm.org/xrp/_next/static/media/bg-bottom.b0d91a03.png')",
+    backgroundPosition: 'right bottom',
     backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
     position: 'absolute',
-    height: '1017px',
+    height: '505px',
     width: ' 288px',
     zIndex: -2,
     bottom: 0,

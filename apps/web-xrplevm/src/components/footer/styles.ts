@@ -3,8 +3,9 @@ import Color from 'color';
 
 const useStyles = makeStyles()((theme) => ({
   root: {
-    background: theme.palette.background.paper,
+    backdropFilter: 'blur(8px)',
     padding: theme.spacing(6, 3, 6),
+    width: '100%',
     color: theme.palette.custom.fonts.fontOne,
     '& .footer__closing--container': {
       '& a': {
@@ -96,8 +97,9 @@ const useStyles = makeStyles()((theme) => ({
         marginTop: theme.spacing(5),
       },
       '& .footer': {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(8, 1fr)',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
       },
       '& .footer__links': {
         gridColumn: '2/8',

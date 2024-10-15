@@ -21,7 +21,7 @@ const Footer: FC<{ className?: string }> = ({ className }) => {
           <div>
             <PeersystIcon />
             <p className="xrp_text">
-              Building the XRPLedger EVMSidechain and bridge solution for XRP with Ripple
+              Building the XRPL EVM Sidechain and bridge solution for XRP with Ripple
             </p>
           </div>
           <div />
