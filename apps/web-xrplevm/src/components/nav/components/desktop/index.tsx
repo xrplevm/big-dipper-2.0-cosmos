@@ -26,6 +26,7 @@ const Desktop: FC<DesktopProps> = ({ className, title }) => {
       <div className={cx(classes.root, className)}>
         <AppBar
           position="fixed"
+          style={{ height: 'fit-content' }}
           className={cx(classes.appBar, {
             open: isMenu,
           })}

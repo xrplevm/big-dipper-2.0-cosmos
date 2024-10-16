@@ -26,7 +26,12 @@ const useStyles = makeStyles()((theme) => ({
       display: 'none',
     },
   },
-  appBarPlaceholder: theme.mixins.toolbar as CSSObject,
+  appBarPlaceholder: {
+    '@media (min-width: 1280px)': {
+      height: '4.8rem',
+      overflow: 'hidden',
+    },
+  },
   children: {
     flexGrow: 1,
     display: 'flex',
