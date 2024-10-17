@@ -56,7 +56,7 @@ const useStyles = makeStyles()((theme) => ({
   },
   backgroundLeft: {
     backgroundImage:
-      "url('https://governance.xrplevm.org/xrp/_next/static/media/bg-top.54b41bbe.png')",
+      "url('https://peersyst-public-production.s3.eu-west-1.amazonaws.com/5b47143d-4299-4910-8706-b1453d16dd30.png')",
     backgroundPosition: 'left top',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
@@ -72,7 +72,7 @@ const useStyles = makeStyles()((theme) => ({
   },
   backgroundRight: {
     backgroundImage:
-      "url('https://governance.xrplevm.org/xrp/_next/static/media/bg-bottom.b0d91a03.png')",
+      "url('https://peersyst-public-production.s3.eu-west-1.amazonaws.com/30b071ce-510f-4bd7-bce7-032a635dd213.png')",
     backgroundPosition: 'right bottom',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
