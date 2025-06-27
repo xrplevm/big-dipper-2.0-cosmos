@@ -257,7 +257,9 @@
       "endpoints": {
         "graphql": "https://cosmos-explorer-evm-sidechain.peersyst.tech/v1/graphql",
         "graphqlWebsocket": "wss://cosmos-explorer-evm-sidechain.peersyst.tech/v1/graphql",
-        "publicRpcWebsocket": "wss://tm-ws-evm-poa-sidechain.peersyst.tech/websocket"
+        "publicRpcWebsocket": "wss://tm-ws-evm-poa-sidechain.peersyst.tech/websocket",
+        "cosmosRpc": "http://cosmos.devnet.xrplevm.org:26657",
+        "blockExplorer": "https://explorer.devnet.xrplevm.org"
       },
       "marketing": {
         "matomoURL": "https://analytics.bigdipper.live",
@@ -291,7 +293,9 @@
       "endpoints": {
         "graphql": "https://governance.testnet.xrplevm.org/v1/graphql",
         "graphqlWebsocket": "wss://governance.testnet.xrplevm.org/v1/graphql",
-        "publicRpcWebsocket": "wss://rpc-xrpdev.kintsugi-nodes.com/websocket"
+        "publicRpcWebsocket": "wss://rpc-xrpdev.kintsugi-nodes.com/websocket",
+        "cosmosRpc": "http://cosmos.testnet.xrplevm.org:26657",
+        "blockExplorer": "https://explorer.testnet.xrplevm.org"
       },
       "marketing": {
         "matomoURL": "https://analytics.bigdipper.live",
@@ -323,9 +327,11 @@
         }
       },
       "endpoints": {
-        "graphql": "https://governance-mainnet.aws.peersyst.tech/v1/graphql",
-        "graphqlWebsocket": "wss://governance-mainnet.aws.peersyst.tech/v1/graphql",
-        "publicRpcWebsocket": "wss://tbd/websocket"
+        "graphql": "https://governance.private-mainnet.xrplevm.org/v1/graphql",
+        "graphqlWebsocket": "wss://governance.private-mainnet.xrplevm.org/v1/graphql",
+        "publicRpcWebsocket": "wss://tbd/websocket",
+        "cosmosRpc": "https://cosmos-rpc.xrplevm.org",
+        "blockExplorer": "https://explorer.xrplevm.org"
       },
       "marketing": {
         "matomoURL": "https://analytics.bigdipper.live",

@@ -6,8 +6,8 @@ import LoadAndExist from '@/components/load_and_exist';
 import Balance from '@/screens/account_details/components/balance';
 import OtherTokens from '@/screens/account_details/components/other_tokens';
 import Overview from '@/screens/account_details/components/overview';
-import Staking from '@/screens/account_details/components/staking';
 import Transactions from '@/screens/account_details/components/transactions';
+import Staking from '@/screens/account_details/components/staking';
 import { useAccountProfileDetails, useAccountBalance } from '@/screens/account_details/hooks';
 import useStyles from '@/screens/account_details/styles';
 
@@ -16,7 +16,7 @@ const AccountDetails = () => {
   const { classes } = useStyles();
   const { profileState } = useAccountProfileDetails();
   const accountBalance = useAccountBalance();
-  const { state: accountBalanceState } = accountBalance;
+  const { state: accountBalanceState, otherTokensProcessing } = accountBalance;
 
   return (
     <>
@@ -55,7 +55,7 @@ const AccountDetails = () => {
                 <OtherTokens
                   className={classes.otherTokens}
                   otherTokens={accountBalanceState.otherTokens}
-                  loading={accountBalanceState.loading}
+                  loading={otherTokensProcessing}
                 />
               </>
             ) : null}

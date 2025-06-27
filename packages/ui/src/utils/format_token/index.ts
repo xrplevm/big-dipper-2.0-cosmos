@@ -114,3 +114,13 @@ export const removeEndingZeros = (value: string) => {
   }
   return value.substring(0, end);
 };
+
+export const formatSymbol = (symbol: string | undefined) => {
+  if (!symbol) return '';
+
+  const upperSymbol = symbol.toUpperCase();
+  if (upperSymbol.startsWith('U') && upperSymbol.length > 1) {
+    return 'u' + upperSymbol.substring(1);
+  }
+  return upperSymbol;
+};

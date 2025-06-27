@@ -2,18 +2,23 @@ import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import useAppTranslation from '@/hooks/useAppTranslation';
 import { FC, Fragment } from 'react';
-import { formatNumber } from '@/utils/format_token';
+import { formatNumber, formatSymbol } from '@/utils/format_token';
 import type { OtherTokenType } from '@/screens/account_details/types';
 import useStyles from '@/screens/account_details/components/other_tokens/components/mobile/styles';
+import { Link } from '@mui/material';
+import chainConfig from '@/chainConfig';
 
 type MobileProps = {
   className?: string;
   items?: OtherTokenType[];
 };
 
+const explorerUrl = chainConfig().endpoints.blockExplorer;
+
 const Mobile: FC<MobileProps> = ({ className, items }) => {
   const { classes } = useStyles();
   const { t } = useAppTranslation('accounts');
+
   return (
     <div className={className}>
       {items?.map((x, i) => {
@@ -29,12 +34,32 @@ const Mobile: FC<MobileProps> = ({ className, items }) => {
             <div className={classes.list}>
               <div className={classes.item}>
                 <Typography variant="h4" className="label">
+                  {t('symbol')}
+                </Typography>
+                <Typography variant="body1" className="value">
+                  {formatSymbol(x.parsedDenom)}
+                </Typography>
+              </div>
+
+              <div className={classes.item}>
+                <Typography variant="h4" className="label">
                   {t('token')}
                 </Typography>
                 <Typography variant="body1" className="value">
-                  {x.denom.toUpperCase()}
+                  {x.erc20Address ? (
+                    <Link
+                      href={`${explorerUrl}/address/${x.erc20Address}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {x.denom.toUpperCase()}
+                    </Link>
+                  ) : (
+                    <span>{x.denom.toUpperCase()}</span>
+                  )}
                 </Typography>
               </div>
+
               <div className={classes.item}>
                 <Typography variant="h4" className="label">
                   {t('available')}

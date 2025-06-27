@@ -28,7 +28,7 @@ const Networks: FC<ComponentDefault> = ({ className }) => {
       mainnet: [
         {
           chainId: 'xrpl-mainnet',
-          url: 'https://livenet.xrpl.org/',
+          url: 'https://governance.xrplevm.org/',
           name: 'Mainnet',
         },
       ],
@@ -42,7 +42,7 @@ const Networks: FC<ComponentDefault> = ({ className }) => {
       devnet: [
         {
           chainId: 'xrpl-devnet',
-          url: 'https://egovernance.devnet.xrplevm.org/',
+          url: 'https://governance.devnet.xrplevm.org/',
           name: 'Devnet',
         },
       ],
@@ -62,7 +62,6 @@ const Networks: FC<ComponentDefault> = ({ className }) => {
                 url={network.url}
                 name={network.name}
                 chainId={network.chainId}
-                disabled
               />
             ))}
             {x.testnet.map((network) => (

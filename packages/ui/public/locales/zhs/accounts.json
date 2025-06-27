@@ -25,6 +25,7 @@
   "balanceCommission": "佣金",
   "otherTokens": "其他代币",
   "token": "代币",
+  "symbol": "符号",
   "available": "可用的",
   "connections": "{{connections}} 连接",
   "connectionsTitle": "连接",
