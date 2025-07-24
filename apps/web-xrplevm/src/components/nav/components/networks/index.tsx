@@ -27,22 +27,22 @@ const Networks: FC<ComponentDefault> = ({ className }) => {
       name: 'XRPL',
       mainnet: [
         {
-          chainId: 'xrpl-mainnet',
+          chainId: 'XRPL EVM Mainnet',
           url: 'https://governance.xrplevm.org/',
           name: 'Mainnet',
         },
       ],
       testnet: [
         {
-          chainId: 'xrpl-testnet',
+          chainId: 'XRPL EVM Testnet',
           url: 'https://governance.testnet.xrplevm.org/',
           name: 'Testnet',
         },
       ],
       devnet: [
         {
-          chainId: 'xrpl-devnet',
-          url: 'https://egovernance.devnet.xrplevm.org/',
+          chainId: 'XRPL EVM Devnet',
+          url: 'https://governance.devnet.xrplevm.org/',
           name: 'Devnet',
         },
       ],
