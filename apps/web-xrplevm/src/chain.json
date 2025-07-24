@@ -258,7 +258,8 @@
         "graphql": "https://cosmos-explorer-evm-sidechain.peersyst.tech/v1/graphql",
         "graphqlWebsocket": "wss://cosmos-explorer-evm-sidechain.peersyst.tech/v1/graphql",
         "publicRpcWebsocket": "wss://tm-ws-evm-poa-sidechain.peersyst.tech/websocket",
-        "cosmosRpc": "http://cosmos.devnet.xrplevm.org:26657"
+        "cosmosRpc": "http://cosmos.devnet.xrplevm.org:26657",
+        "blockExplorer": "https://explorer.devnet.xrplevm.org"
       },
       "marketing": {
         "matomoURL": "https://analytics.bigdipper.live",
@@ -293,7 +294,8 @@
         "graphql": "https://governance.testnet.xrplevm.org/v1/graphql",
         "graphqlWebsocket": "wss://governance.testnet.xrplevm.org/v1/graphql",
         "publicRpcWebsocket": "wss://rpc-xrpdev.kintsugi-nodes.com/websocket",
-        "cosmosRpc": "http://cosmos.testnet.xrplevm.org:26657"
+        "cosmosRpc": "http://cosmos.testnet.xrplevm.org:26657",
+        "blockExplorer": "https://explorer.testnet.xrplevm.org"
       },
       "marketing": {
         "matomoURL": "https://analytics.bigdipper.live",
@@ -328,7 +330,8 @@
         "graphql": "https://governance.private-mainnet.xrplevm.org/v1/graphql",
         "graphqlWebsocket": "wss://governance.private-mainnet.xrplevm.org/v1/graphql",
         "publicRpcWebsocket": "wss://tbd/websocket",
-        "cosmosRpc": "http://cosmos.xrplevm.org:26657"
+        "cosmosRpc": "http://cosmos.xrplevm.org:26657",
+        "blockExplorer": "https://explorer.xrplevm.org"
       },
       "marketing": {
         "matomoURL": "https://analytics.bigdipper.live",

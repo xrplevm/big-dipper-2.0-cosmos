@@ -18,6 +18,7 @@ export interface OtherTokenType {
   reward: TokenUnit;
   commission: TokenUnit;
   parsedDenom?: string;
+  erc20Address?: string;
 }
 
 export interface RewardsType {

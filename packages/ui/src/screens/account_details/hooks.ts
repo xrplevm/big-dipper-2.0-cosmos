@@ -1,7 +1,7 @@
 import Big from 'big.js';
 import { useRouter } from 'next/router';
 import * as R from 'ramda';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import chainConfig from '@/chainConfig';
 import { useDesmosProfile } from '@/hooks/use_desmos_profile';
 import type {
@@ -22,7 +22,7 @@ import {
 } from '@/screens/account_details/utils';
 import { formatToken } from '@/utils/format_token';
 import { getDenom } from '@/utils/get_denom';
-import { fetchParseIbcDenom, isIbcDenom } from '@/utils/ibc';
+import { fetchErc20AddressForDenom, fetchParseIbcDenom, isIbcDenom } from '@/utils/ibc';
 
 const { extra, primaryTokenUnit, tokenUnits } = chainConfig();
 
@@ -261,7 +261,8 @@ export const useAccountProfileDetails = () => {
 export const useAccountBalance = () => {
   const router = useRouter();
   const [state, setState] = useState<AccountBalanceState>(balanceInitialState);
-  const [ibcParsingInProgress, setIbcParsingInProgress] = useState(false);
+
+  const [otherTokensProcessing, setOtherTokensProcessing] = useState(true);
 
   const handleSetState = useCallback(
     (stateChange: (prevState: AccountBalanceState) => AccountBalanceState) => {
@@ -307,65 +308,61 @@ export const useAccountBalance = () => {
     }
   }, [commission, available, delegation, unbonding, rewards, handleSetState]);
 
+  const ibcDenoms = useMemo(
+    () => state.otherTokens.data.filter((t) => isIbcDenom(t.denom)).map((t) => t.denom),
+    [state.otherTokens.data]
+  );
+  const ibcDenomsKey = useMemo(() => ibcDenoms.join('|'), [ibcDenoms]);
+
   useEffect(() => {
-    async function parseIbcTokens() {
-      if (!state.otherTokens.data.length) {
-        return;
-      }
+    if (state.loading || !ibcDenomsKey) return;
 
-      const toParse = state.otherTokens.data.filter((t) => isIbcDenom(t.denom));
+    const toProcess = state.otherTokens.data.filter((t) => isIbcDenom(t.denom));
 
-      if (!toParse.length) {
-        return;
-      }
+    if (toProcess.length === 0) {
+      setOtherTokensProcessing(false);
+      return;
+    }
 
-      setIbcParsingInProgress(true);
-
+    (async () => {
       try {
-        const parsedTokens = await Promise.all(
-          toParse.map(async (token) => {
-            try {
-              const parsedDenom = await fetchParseIbcDenom(token.denom);
-              return {
-                ...token,
-                parsedDenom: parsedDenom || undefined,
-              };
-            } catch (error) {
-              console.error(`Failed to parse IBC token ${token.denom}:`, error);
-              return token;
-            }
-          })
-        );
-
-        handleSetState((prevState) => {
-          const updatedTokens = [...prevState.otherTokens.data];
-
-          parsedTokens.forEach((parsedToken) => {
-            const index = updatedTokens.findIndex((t) => t.denom === parsedToken.denom);
-            if (index >= 0) {
-              updatedTokens[index] = parsedToken;
-            }
-          });
-
-          return {
-            ...prevState,
-            otherTokens: {
-              data: updatedTokens,
-              count: updatedTokens.length,
-            },
+        const jobs = ibcDenoms.map(async (denom) => {
+          const token = state.otherTokens.data.find((t) => t.denom === denom) || {
+            denom,
+            parsedDenom: undefined,
+            erc20Address: undefined,
           };
+          const [parsedDenom, erc20Address] = await Promise.all([
+            token.parsedDenom == null
+              ? fetchParseIbcDenom(denom).catch(() => undefined)
+              : Promise.resolve(token.parsedDenom),
+            token.erc20Address == null
+              ? fetchErc20AddressForDenom(denom).catch(() => undefined)
+              : Promise.resolve(token.erc20Address),
+          ]);
+          return { denom, parsedDenom, erc20Address };
+        });
+
+        const results = await Promise.all(jobs);
+        handleSetState((prev) => {
+          const updated = prev.otherTokens.data.map((tok) => {
+            const entry = results.find((r) => r.denom === tok.denom);
+            if (!entry) return tok;
+            return {
+              ...tok,
+              parsedDenom: entry.parsedDenom ?? tok.parsedDenom,
+              erc20Address: entry.erc20Address ?? tok.erc20Address,
+            };
+          });
+          return { ...prev, otherTokens: { data: updated, count: updated.length } };
         });
       } finally {
-        setIbcParsingInProgress(false);
+        setOtherTokensProcessing(false);
       }
-    }
+    })();
+  }, [state.loading, ibcDenomsKey, handleSetState]);
 
-    if (!state.loading) {
-      parseIbcTokens();
-    }
-  }, [state.otherTokens.data, state.loading, handleSetState]);
-
-  return { state, ibcParsingInProgress };
+  return { state, otherTokensProcessing };
 };
 
 export const useAccountWithdrawalAddr = () => {
@@ -433,6 +430,11 @@ export const useAccountRewards = () => {
       handleSetState((prevState) => ({
         ...prevState,
         rewards: updatedRewards,
+        loading: false,
+      }));
+    } else {
+      handleSetState((prevState) => ({
+        ...prevState,
         loading: false,
       }));
     }

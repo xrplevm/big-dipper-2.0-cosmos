@@ -72,10 +72,8 @@ export async function parseIbcDenom(hash: string): Promise<string | undefined> {
  */
 export async function fetchParseIbcDenom(denom: string): Promise<string> {
   if (!isIbcDenom(denom)) return denom;
-  console.log('Fetching denom:');
 
-  const hash = extractIbcHash(denom);
-  const response = await fetch(`/xrplevm/api/parse_denom?hash=${hash}`);
+  const response = await fetch(`/xrplevm/api/parse_denom?hash=${denom}`);
   const data = await response.json();
 
   if (response.ok && data.baseDenom) {
@@ -84,4 +82,64 @@ export async function fetchParseIbcDenom(denom: string): Promise<string> {
 
   console.error('Error fetching denom:', data.error);
   return denom;
+}
+
+/**
+ * Query the Cosmos ERC20 module to find the corresponding Ethereum ERC20
+ * contract address for a given Cosmos denom (including IBC denoms).
+ * @param denom The Cosmos base denom or IBC denom (e.g. 'uosmo' or 'ibc/ED07A3...')
+ * @returns The associated ERC20 contract address, or undefined if not registered
+ */
+export async function getErc20AddressForDenom(denom: string): Promise<string | undefined> {
+  const rpc = getCurrentRpcEndpoint();
+  const lcd = rpc.replace(/:26657$/, ':1317');
+
+  const url = `${lcd}/evmos/erc20/v1/token_pairs`;
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.warn(`ERC20 lookup failed: HTTP ${res.status}`);
+      return undefined;
+    }
+
+    const json = await res.json();
+    const tokenPairs = json.token_pairs || [];
+
+    const pair = tokenPairs.find(
+      (pair: any) => pair.denom === denom || (isIbcDenom(denom) && pair.denom === denom)
+    );
+
+    if (pair) {
+      return pair.erc20_address;
+    } else {
+      console.warn(`No ERC20 mapping found for denom: ${denom}`);
+      return undefined;
+    }
+  } catch (err) {
+    console.warn(`Error fetching ERC20 address for ${denom}:`, err);
+    return undefined;
+  }
+}
+
+/**
+ * Fetches the ERC20 contract address for an IBC denomination via API (client-side friendly)
+ * @param denom The denomination to lookup (e.g., 'ibc/HASH123')
+ * @returns The ERC20 address if found, or undefined otherwise
+ */
+export async function fetchErc20AddressForDenom(denom: string): Promise<string | undefined> {
+  if (!isIbcDenom(denom)) {
+    console.warn('Not an IBC denom, cannot fetch ERC20 address:', denom);
+    return undefined;
+  }
+
+  const response = await fetch(`/xrplevm/api/erc20_for_denom?denom=${encodeURIComponent(denom)}`);
+  const data = await response.json();
+
+  if (response.ok && data.erc20Address) {
+    return data.erc20Address;
+  }
+
+  console.error('Error fetching ERC20 address:', data.error);
+  return undefined;
 }
