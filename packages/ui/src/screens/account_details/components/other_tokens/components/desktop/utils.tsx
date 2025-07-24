@@ -8,6 +8,11 @@ export const columns: {
     width: 25,
   },
   {
+    key: 'symbol',
+    width: 25,
+    align: 'right',
+  },
+  {
     key: 'available',
     width: 25,
     align: 'right',

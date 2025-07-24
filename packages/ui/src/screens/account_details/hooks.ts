@@ -261,6 +261,7 @@ export const useAccountProfileDetails = () => {
 export const useAccountBalance = () => {
   const router = useRouter();
   const [state, setState] = useState<AccountBalanceState>(balanceInitialState);
+  const [ibcParsingInProgress, setIbcParsingInProgress] = useState(false);
 
   const handleSetState = useCallback(
     (stateChange: (prevState: AccountBalanceState) => AccountBalanceState) => {
@@ -428,3 +429,4 @@ export const useAccountRewards = () => {
 
   return { state };
 };
+export { useRewards };

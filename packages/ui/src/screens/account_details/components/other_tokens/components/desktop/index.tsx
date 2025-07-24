@@ -5,21 +5,24 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import useAppTranslation from '@/hooks/useAppTranslation';
 import { FC } from 'react';
-import { formatNumber } from '@/utils/format_token';
+import { formatNumber, formatSymbol } from '@/utils/format_token';
 import type { OtherTokenType } from '@/screens/account_details/types';
 import { columns } from '@/screens/account_details/components/other_tokens/components/desktop/utils';
+import { CircularProgress } from '@mui/material';
 
 type DesktopProps = {
   className?: string;
   items?: OtherTokenType[];
+  ibcParsingInProgress?: boolean;
 };
 
-const Desktop: FC<DesktopProps> = ({ className, items }) => {
+const Desktop: FC<DesktopProps> = ({ className, items, ibcParsingInProgress }) => {
   const { t } = useAppTranslation('accounts');
 
   const formattedItems = items?.map((x, i) => ({
     key: i,
     token: x.denom.toUpperCase(),
+    symbol: formatSymbol(x.parsedDenom),
     commission: x.commission ? formatNumber(x.commission.value, x.commission.exponent) : '',
     available: formatNumber(x.available.value, x.available.exponent),
     reward: x.reward ? formatNumber(x.reward.value, x.reward.exponent) : '',
@@ -50,7 +53,11 @@ const Desktop: FC<DesktopProps> = ({ className, items }) => {
                   align={column.align}
                   style={{ width: `${column.width}%` }}
                 >
-                  {row[column.key as keyof typeof row]}
+                  {column.key === 'symbol' && ibcParsingInProgress ? (
+                    <CircularProgress size={16} />
+                  ) : (
+                    row[column.key as keyof typeof row]
+                  )}
                 </TableCell>
               ))}
             </TableRow>

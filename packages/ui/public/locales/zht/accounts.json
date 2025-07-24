@@ -25,6 +25,7 @@
   "balanceCommission": "佣金結餘",
   "otherTokens": "其他通證",
   "token": "通證",
+  "symbol": "符號",
   "available": "可用的",
   "connections": "{{connections}} 連接",
   "connectionsTitle": "連接",
