@@ -4,27 +4,26 @@ export const columns: {
   width: number;
 }[] = [
   {
-    key: 'token',
-    width: 25,
+    key: 'symbol',
+    width: 20,
   },
   {
-    key: 'symbol',
-    width: 25,
-    align: 'right',
+    key: 'token',
+    width: 20,
   },
   {
     key: 'available',
-    width: 25,
+    width: 20,
     align: 'right',
   },
   {
     key: 'reward',
-    width: 25,
+    width: 20,
     align: 'right',
   },
   {
     key: 'commission',
-    width: 25,
+    width: 20,
     align: 'right',
   },
 ];

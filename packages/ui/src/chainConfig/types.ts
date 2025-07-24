@@ -23,6 +23,7 @@ export interface ChainSettings {
     graphqlWebsocket?: string;
     publicRpcWebsocket?: string;
     cosmosRpc?: string;
+    blockExplorer?: string;
   };
   marketing: {
     matomoURL?: string;
@@ -136,6 +137,7 @@ export interface ChainConfig extends ChainSettings {
     profile: boolean;
     graphqlWs: boolean;
     votingPowerExponent?: number;
+    decimals?: number;
   };
   basePath: string;
   previewImage?: string;

@@ -19,15 +19,9 @@ type OtherTokensProps = {
     count: number;
   };
   loading: boolean;
-  ibcParsingInProgress?: boolean;
 };
 
-const OtherTokens: FC<OtherTokensProps> = ({
-  className,
-  otherTokens,
-  loading,
-  ibcParsingInProgress,
-}) => {
+const OtherTokens: FC<OtherTokensProps> = ({ className, otherTokens, loading }) => {
   const { t } = useAppTranslation('accounts');
   const { classes } = useStyles();
   const display = useDisplayStyles().classes;
@@ -49,16 +43,8 @@ const OtherTokens: FC<OtherTokensProps> = ({
         <Loading />
       ) : (
         <>
-          <Desktop
-            className={display.hiddenUntilLg}
-            items={items}
-            ibcParsingInProgress={ibcParsingInProgress}
-          />
-          <Mobile
-            className={display.hiddenWhenLg}
-            items={items}
-            ibcParsingInProgress={ibcParsingInProgress}
-          />
+          <Desktop className={display.hiddenUntilLg} items={items} />
+          <Mobile className={display.hiddenWhenLg} items={items} />
           <Pagination
             className={classes.paginate}
             total={count}

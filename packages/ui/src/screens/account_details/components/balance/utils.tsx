@@ -1,5 +1,8 @@
 import Big from 'big.js';
 import { formatNumber } from '@/utils/format_token';
+import chainConfig from '@/chainConfig';
+
+const { extra } = chainConfig();
 
 export const formatBalanceData = (data: {
   available: TokenUnit;
@@ -14,7 +17,7 @@ export const formatBalanceData = (data: {
       key: 'balanceAvailable',
       display: `${formatNumber(
         data.available.value,
-        data.available.exponent
+        extra.decimals
       )} ${data.available.displayDenom.toUpperCase()}`,
       value: data.available.value,
     },
@@ -22,7 +25,7 @@ export const formatBalanceData = (data: {
       key: 'balanceDelegate',
       display: `${formatNumber(
         data.delegate.value,
-        data.delegate.exponent
+        extra.decimals
       )} ${data.delegate.displayDenom.toUpperCase()}`,
       value: data.delegate.value,
     },
@@ -30,7 +33,7 @@ export const formatBalanceData = (data: {
       key: 'balanceUnbonding',
       display: `${formatNumber(
         data.unbonding.value,
-        data.unbonding.exponent
+        extra.decimals
       )} ${data.unbonding.displayDenom.toUpperCase()}`,
       value: data.unbonding.value,
     },
@@ -39,7 +42,7 @@ export const formatBalanceData = (data: {
       display: data.reward
         ? `${formatNumber(
             data.reward.value,
-            data.reward.exponent
+            extra.decimals
           )} ${data.reward.displayDenom.toUpperCase()}`
         : '',
       value: data.reward?.value,
@@ -51,7 +54,7 @@ export const formatBalanceData = (data: {
       key: 'balanceCommission',
       display: `${formatNumber(
         data.commission.value,
-        data.commission.exponent
+        extra.decimals
       )} ${data.commission.displayDenom.toUpperCase()}`,
       value: data.commission.value,
     });

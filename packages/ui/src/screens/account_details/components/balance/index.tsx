@@ -17,7 +17,7 @@ import { useRecoilValue } from 'recoil';
 import Loading from '@/components/loading';
 
 const DynamicPieChart = dynamic(() => Promise.resolve(PieChart), { ssr: false });
-const { primaryTokenUnit, tokenUnits } = chainConfig();
+const { primaryTokenUnit, tokenUnits, extra } = chainConfig();
 
 type BalanceProps = Parameters<typeof formatBalanceData>[0] & {
   className?: string;
@@ -59,7 +59,7 @@ const Balance: FC<BalanceProps> = (props) => {
   ).format('0,0.00')}`;
 
   // format
-  const totalDisplay = formatNumber(props.total.value, props.total.exponent);
+  const totalDisplay = formatNumber(props.total.value, extra.decimals);
 
   return (
     <Box className={cx(classes.root, props.className)}>
