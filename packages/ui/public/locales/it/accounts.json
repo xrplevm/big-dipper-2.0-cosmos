@@ -25,6 +25,7 @@
   "balanceCommission": "Commissione",
   "otherTokens": "Altri token",
   "token": "Token",
+  "symbol": "Simbolo",
   "available": "Disponibile",
   "connections": "{{connections}} Connessioni",
   "connectionsTitle": "Connessioni",

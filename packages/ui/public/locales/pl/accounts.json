@@ -25,6 +25,7 @@
   "balanceCommission": "Prowizja",
   "otherTokens": "Inne tokeny",
   "token": "Token",
+  "symbol": "Symbol",
   "available": "Dostępny",
   "connections": "{{connections}} połączeń)",
   "connectionsTitle": "Połączenia)",

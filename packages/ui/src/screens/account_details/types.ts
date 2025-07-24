@@ -17,6 +17,7 @@ export interface OtherTokenType {
   available: TokenUnit;
   reward: TokenUnit;
   commission: TokenUnit;
+  parsedDenom?: string;
 }
 
 export interface RewardsType {
