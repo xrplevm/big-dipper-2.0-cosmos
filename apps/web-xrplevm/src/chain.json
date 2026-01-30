@@ -231,7 +231,7 @@
   "keplr": "{\"chainId\":\"exrp-1440002-1\",\"chainName\":\"XRPLEVM\",\"chainSymbolImageUrl\":\"https://raw.githubusercontent.com/chainapsis/keplr-chain-registry/main/images/desmos-mainnet/chain.png\",\"rpc\":\"https://rpc.mainnet.desmos.network\",\"rest\":\"https://api.mainnet.desmos.network\",\"nodeProvider\":{\"name\":\"Forbole\",\"email\":\"info@forbole.com\",\"website\":\"https://www.forbole.com\"},\"bip44\":{\"coinType\":852},\"bech32Config\":{\"bech32PrefixAccAddr\":\"desmos\",\"bech32PrefixAccPub\":\"desmospub\",\"bech32PrefixValAddr\":\"desmosvaloper\",\"bech32PrefixValPub\":\"desmosvaloperpub\",\"bech32PrefixConsAddr\":\"desmosvalcons\",\"bech32PrefixConsPub\":\"desmosvalconspub\"},\"currencies\":[{\"coinDenom\":\"DSM\",\"coinMinimalDenom\":\"udsm\",\"coinDecimals\":6,\"coinGeckoId\":\"desmos\"}],\"feeCurrencies\":[{\"coinDenom\":\"DSM\",\"coinMinimalDenom\":\"udsm\",\"coinDecimals\":6,\"coinGeckoId\":\"desmos\",\"gasPriceStep\":{\"low\":0.01,\"average\":0.03,\"high\":0.05}}],\"stakeCurrency\":{\"coinDenom\":\"DSM\",\"coinMinimalDenom\":\"udsm\",\"coinDecimals\":6,\"coinGeckoId\":\"desmos\"},\"features\":[]}",
   "chains": [
     {
-      "network": "exrp_1440002-1",
+      "network": "exrp_1449900-1",
       "chainType": "Devnet",
       "genesis": {
         "time": "2021-08-31T16:15:00",
@@ -255,10 +255,10 @@
         }
       },
       "endpoints": {
-        "graphql": "https://cosmos-explorer-evm-sidechain.peersyst.tech/v1/graphql",
-        "graphqlWebsocket": "wss://cosmos-explorer-evm-sidechain.peersyst.tech/v1/graphql",
-        "publicRpcWebsocket": "wss://tm-ws-evm-poa-sidechain.peersyst.tech/websocket",
-        "cosmosRpc": "http://cosmos.devnet.xrplevm.org:26657"
+        "graphql": "https://governance.devnet.xrplevm.org/v1/graphql",
+        "graphqlWebsocket": "wss://governance.devnet.xrplevm.org/v1/graphql",
+        "publicRpcWebsocket": "wss://cosmos-rpc.devnet.xrplevm.org/websocket",
+        "cosmosRpc": "https://cosmos-rpc.devnet.xrplevm.org"
       },
       "marketing": {
         "matomoURL": "https://analytics.bigdipper.live",
