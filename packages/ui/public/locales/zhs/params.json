@@ -37,5 +37,8 @@
   "reductionFactor": "缩减因子",
   "genesisEpochProvisions": "创世纪元规定",
   "reductionPeriodInEpochs": "减少纪元的周期",
-  "mintingRewardsDistributionStartEpoch": "铸造奖励分配开始纪元"
+  "mintingRewardsDistributionStartEpoch": "铸造奖励分配开始纪元",
+  "expeditedMinDeposit": "加急最低存款",
+  "expeditedThreshold": "加急阈值",
+  "expeditedVotingPeriod": "加急投票期"
 }

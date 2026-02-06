@@ -49,7 +49,7 @@ const Params = () => {
   const gov = state.gov
     ? {
         title: t('gov') ?? undefined,
-        details: formatGov(state.gov, t),
+        details: formatGov(state.gov, t).filter((item) => !!item.detail),
       }
     : null;
 

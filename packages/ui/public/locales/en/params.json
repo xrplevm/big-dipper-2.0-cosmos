@@ -37,5 +37,8 @@
   "reductionFactor": "Reduction Factor",
   "genesisEpochProvisions": "Genesis Epoch Provisions",
   "reductionPeriodInEpochs": "Reduction Period In Epochs",
-  "mintingRewardsDistributionStartEpoch": "Minting Rewards Distribution Start Epoch"
+  "mintingRewardsDistributionStartEpoch": "Minting Rewards Distribution Start Epoch",
+  "expeditedMinDeposit": "Expedited Min Deposit",
+  "expeditedThreshold": "Expedited Threshold",
+  "expeditedVotingPeriod": "Expedited Voting Period"
 }

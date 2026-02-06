@@ -37,5 +37,8 @@
   "reductionFactor": "Fattore di riduzione",
   "genesisEpochProvisions": "Disposizioni di Genesis Epoch",
   "reductionPeriodInEpochs": "Periodo di riduzione in epoche",
-  "mintingRewardsDistributionStartEpoch": "Epoca iniziale distribuzione premi conio"
+  "mintingRewardsDistributionStartEpoch": "Epoca iniziale distribuzione premi conio",
+  "expeditedMinDeposit": "Deposito Minimo Accelerato",
+  "expeditedThreshold": "Soglia Accelerata",
+  "expeditedVotingPeriod": "Periodo di Votazione Accelerato"
 }

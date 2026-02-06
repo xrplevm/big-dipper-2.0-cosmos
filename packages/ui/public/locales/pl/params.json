@@ -37,5 +37,8 @@
   "reductionFactor": "Współczynnik redukcji",
   "genesisEpochProvisions": "Zaopatrzenie epoki genesis",
   "reductionPeriodInEpochs": "Okres redukcji w epokach",
-  "mintingRewardsDistributionStartEpoch": "Epoka rozpoczęcia dystrybucji mint nagród"
+  "mintingRewardsDistributionStartEpoch": "Epoka rozpoczęcia dystrybucji mint nagród",
+  "expeditedMinDeposit": "Przyspieszony Minimalny Depozyt",
+  "expeditedThreshold": "Przyspieszony Próg",
+  "expeditedVotingPeriod": "Przyspieszony Okres Głosowania"
 }
