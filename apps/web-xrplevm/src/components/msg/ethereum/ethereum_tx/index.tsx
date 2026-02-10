@@ -1,29 +1,44 @@
+import chainConfig from '@/chainConfig';
+import AppTrans from '@/components/AppTrans';
+import Name from '@/components/name';
 import { MsgEthereumTx } from '@/models';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import useAppTranslation from 'ui/src/hooks/useAppTranslation';
+import useStyles from './styles';
+
+const { endpoints } = chainConfig();
 
 const EthereumTx = (props: { message: MsgEthereumTx }) => {
   const { message } = props;
 
-  const { t: tMessage } = useAppTranslation('message_contents');
   const { t: tHome } = useAppTranslation('home');
+  const { classes } = useStyles();
 
   return (
     <>
       <Typography>
-        {tMessage('MsgEthereumTx', {
-          to: message.data.to,
-          value: message.data.value,
-        })}
+        <AppTrans
+          i18nKey="message_contents:MsgEthereumTx"
+          components={[
+            <Name address={message.cosmosFrom} name={message.cosmosFrom} />,
+            <Name address={message.cosmosTo} name={message.cosmosTo || 'contract creation'} />,
+          ]}
+          values={{
+            value: message.value,
+          }}
+        />
       </Typography>
-      <Link
-        href={`https://explorer.xrplevm.org/tx/${message.hash}`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {tHome('seeMore')}
-      </Link>
+      {message.hash && endpoints.evmExplorer && (
+        <Link
+          href={`${endpoints.evmExplorer}/tx/${message.hash}`}
+          target="_blank"
+          rel="noreferrer"
+          className={classes.link}
+        >
+          {tHome('seeMore')}
+        </Link>
+      )}
     </>
   );
 };

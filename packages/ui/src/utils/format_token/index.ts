@@ -120,7 +120,7 @@ export const formatSymbol = (symbol: string | undefined) => {
 
   const upperSymbol = symbol.toUpperCase();
   if (upperSymbol.startsWith('U') && upperSymbol.length > 1) {
-    return 'u' + upperSymbol.substring(1);
+    return `u${upperSymbol.substring(1)}`;
   }
   return upperSymbol;
 };

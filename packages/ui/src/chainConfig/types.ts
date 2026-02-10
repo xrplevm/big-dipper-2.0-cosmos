@@ -23,6 +23,7 @@ export interface ChainSettings {
     graphqlWebsocket?: string;
     publicRpcWebsocket?: string;
     cosmosRpc?: string;
+    evmExplorer?: string;
   };
   marketing: {
     matomoURL?: string;

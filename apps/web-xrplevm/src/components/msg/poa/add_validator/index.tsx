@@ -1,7 +1,6 @@
 import { MsgAddValidator } from '@/models';
 import AppTrans from 'ui/src/components/AppTrans';
 import Tag from 'ui/src/components/tag';
-import { useProfileRecoil } from 'ui/src/recoil/profiles/hooks';
 import { getMiddleEllipsis } from 'ui/src/utils/get_middle_ellipsis';
 
 const AddValidator = (props: { message: MsgAddValidator }) => {

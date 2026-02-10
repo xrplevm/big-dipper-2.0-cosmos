@@ -1,5 +1,5 @@
 {
-  "message_contents.MsgEthereumTx": "调用 EVM 到 {{to}}，数值为 {{value}}",
+  "message_contents.MsgEthereumTx": "以太坊交易，从 <0/> 到 <1/>，价值 {{value}}",
   "message_contents.MsgSoftwareUpgrade": "链升级到版本 {{version}}，计划在区块 {{height}}, 附带二进制文件",
   "message_contents.MsgRemoveValidator": "移除 <0>{{address}}</0> 验证人",
   "message_contents.MsgUpdateParams": "EVM 更新链参数",
