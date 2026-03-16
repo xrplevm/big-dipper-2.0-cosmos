@@ -294,7 +294,7 @@
         "graphql": "https://governance.testnet.xrplevm.org/v1/graphql",
         "graphqlWebsocket": "wss://governance.testnet.xrplevm.org/v1/graphql",
         "publicRpcWebsocket": "wss://rpc-xrpdev.kintsugi-nodes.com/websocket",
-        "cosmosRpc": "http://cosmos.testnet.xrplevm.org:26657",
+        "cosmosRpc": "https://cosmos-rpc.testnet.xrplevm.org",
         "evmExplorer": "https://explorer.testnet.xrplevm.org"
       },
       "marketing": {
