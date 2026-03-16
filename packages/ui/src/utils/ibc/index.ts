@@ -72,7 +72,6 @@ export async function parseIbcDenom(hash: string): Promise<string | undefined> {
  */
 export async function fetchParseIbcDenom(denom: string): Promise<string> {
   if (!isIbcDenom(denom)) return denom;
-  console.log('Fetching denom:');
 
   const hash = extractIbcHash(denom);
   const response = await fetch(`/xrplevm/api/parse_denom?hash=${hash}`);

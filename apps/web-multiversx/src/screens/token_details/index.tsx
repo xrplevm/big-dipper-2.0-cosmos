@@ -14,7 +14,7 @@ const TokenDetails = () => {
   const { classes } = useStyles();
   const { t } = useAppTranslation('tokens');
   const { state } = useTokenDetails();
-  // console.log(state, 'stat');
+
   return (
     <>
       <NextSeo

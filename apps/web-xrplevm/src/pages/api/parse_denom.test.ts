@@ -20,6 +20,7 @@ describe('/api/parse_denom', () => {
     await handler(req, res);
 
     expect(res.statusCode).toBe(400);
+    // eslint-disable-next-line no-underscore-dangle
     expect(JSON.parse(res._getData())).toEqual({ error: 'Missing hash parameter' });
   });
 
@@ -32,6 +33,7 @@ describe('/api/parse_denom', () => {
     await handler(req, res);
 
     expect(res.statusCode).toBe(200);
+    // eslint-disable-next-line no-underscore-dangle
     expect(JSON.parse(res._getData())).toEqual({ baseDenom: 'uosmo' });
   });
 
@@ -44,6 +46,7 @@ describe('/api/parse_denom', () => {
     await handler(req, res);
 
     expect(res.statusCode).toBe(500);
+    // eslint-disable-next-line no-underscore-dangle
     expect(JSON.parse(res._getData())).toEqual({ error: 'Invalid hash' });
   });
 });

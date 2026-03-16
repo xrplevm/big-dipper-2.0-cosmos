@@ -10,9 +10,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const baseDenom = await parseIbcDenom(hash);
-    res.status(200).json({ baseDenom });
-  } catch (error: any) {
+    return res.status(200).json({ baseDenom });
+  } catch (error: unknown) {
     console.error('Error in /api/parse_denom:', error);
-    res.status(500).json({ error: error.message });
+    return res
+      .status(500)
+      .json({ error: error instanceof Error ? error.message : 'Unknown error' });
   }
 }

@@ -1,5 +1,5 @@
 {
-  "message_contents.MsgEthereumTx": "Wywołanie EVM do {{to}} z wartością {{value}}",
+  "message_contents.MsgEthereumTx": "Transakcja Ethereum od <0/> do <1/> z wartością {{value}}",
   "message_contents.MsgSoftwareUpgrade": "Aktualizacja sieci do wersji {{version}}, zaplanowana na blok {{height}} z plikami binarnymi",
   "message_contents.MsgRemoveValidator": "Usuń <0>{{address}}</0> walidator",
   "message_contents.MsgUpdateParams": "Aktualizuj parametry sieci EVM",
